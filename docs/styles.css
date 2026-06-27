@@ -1,0 +1,207 @@
+/* ===========================================================================
+   markus-brill.de — "Banner Navy" theme (plain static HTML)
+   navy = structure/identity · orange = current/news · blue = links.
+   Background warm cream, never white. Headings: Sora. Body: Inter.
+   Fonts are loaded via a <link> in each page's <head>.
+   =========================================================================== */
+
+:root {
+  --navy: #0A2342;
+  --orange: #D6742E;
+  --orange-text: #C2622D;   /* orange on light backgrounds */
+  --orange-lt: #EE9F5C;     /* orange on the navy banner */
+  --blue: #1f6fb2;          /* links */
+  --cream: #F5F1E8;
+  --card: #ffffff;
+  --ink: #262a2e;
+  --muted: #6f6757;
+  --line: #e7ddcb;
+  --soft: #f3eee3;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Navbar (navy, brand left, links right) ------------------------------- */
+.navbar { background: var(--navy); }
+.nav-inner {
+  max-width: 1080px; margin: 0 auto; padding: 1.05rem 1.25rem;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+}
+.brand { font: 700 1.12rem Sora, system-ui, sans-serif; color: #fff; }
+.brand:hover { text-decoration: none; color: #fff; }
+.navlinks { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.navlinks a { color: rgba(255,255,255,.72); font: 500 0.95rem Inter, sans-serif; }
+.navlinks a:hover { color: #fff; text-decoration: none; }
+.navlinks a.active { color: #fff; border-bottom: 2px solid var(--orange); padding-bottom: 2px; }
+
+/* ---- Headings & content links --------------------------------------------- */
+h1, h2, h3, h4 { font-family: Sora, system-ui, sans-serif; color: var(--navy); }
+h1 { font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-weight: 700; font-size: 1.5rem; margin: 2.4rem 0 1.1rem; }
+/* Publications page only: section headings in blue, with a back-to-top arrow */
+.pubs h2 { color: var(--blue); display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.toplink { font-size: 0.85rem; font-weight: 600; color: var(--muted); text-decoration: none; }
+.toplink:hover { color: var(--orange-text); text-decoration: none; }
+h3 { font-weight: 700; }
+
+/* ---- Content wrapper ------------------------------------------------------- */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 1.6rem 1.25rem 4.5rem; }
+.wrap p { margin: 0.7rem 0; }
+/* Lists in content (non-publications): orange square bullets, spaced entries. */
+.wrap:not(.pubs) ul:not(.bio) { list-style: none; padding-left: 0; margin: 0.6rem 0 1.4rem; }
+.wrap:not(.pubs) ul:not(.bio) li { position: relative; padding-left: 1.3em; margin: 0 0 0.85rem; line-height: 1.6; }
+.wrap:not(.pubs) ul:not(.bio) li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 0.5em; height: 0.5em; background: var(--orange-text); }
+
+/* Publications page: each entry is a card; conference cards carry a venue badge. */
+.pubs ul { list-style: none; padding-left: 0; margin: 0.4rem 0 1.8rem; }
+.pubs li {
+  background: var(--card); border: 1px solid var(--line); border-left: 3px solid var(--orange);
+  border-radius: 8px; padding: 0.85rem 1.05rem; margin: 0 0 0.7rem;
+  box-shadow: 0 3px 10px rgba(40,40,40,.04); line-height: 1.55;
+}
+.pub-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0 0 0.5rem; }
+.pub-badge {
+  display: inline-block; background: var(--navy); color: #fff;
+  font: 700 0.72rem Sora, system-ui, sans-serif; letter-spacing: 0.02em;
+  padding: 0.12rem 0.55rem; border-radius: 5px;
+}
+.pub-badge.new { background: var(--orange); }
+
+/* Publications top: profile links (blue, external ↗) + section jumps (orange) */
+.pub-top { margin: 0.4rem 0 1.8rem; }
+.pub-top .cap { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 1rem 0 0.5rem; }
+.pub-top .cap:first-child { margin-top: 0; }
+.link-row { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.link-row a { display: inline-flex; align-items: center; gap: 0.4em; padding: 0.42rem 0.9rem; border-radius: 999px; font-weight: 600; font-size: 0.92rem; border: 1.5px solid; }
+.link-row.ext a { border-color: var(--orange); color: var(--orange-text); }
+.link-row.ext a:hover { background: #fbeee3; text-decoration: none; }
+.link-row.int a { border-color: var(--blue); color: var(--blue); }
+.link-row.int a:hover { background: #eaf2fa; text-decoration: none; }
+.link-row .ar { font-size: 0.85em; }
+
+/* Reference-link pills at the end of publication entries (link / pdf / arXiv …) */
+a.ref { display: inline-block; background: var(--blue); color: #fff; font-size: 0.78rem; font-weight: 600;
+  line-height: 1.45; padding: 0.05rem 0.5rem; border-radius: 5px; margin: 0 0.18rem 0.18rem 0;
+  text-decoration: none; vertical-align: baseline; }
+a.ref:hover { background: #18567f; color: #fff; text-decoration: none; }
+.wrap img { border-radius: 8px; margin: 1rem 0; }
+/* Small right-floated thumbnail for legacy page images (fid, workshop) */
+.wrap img.page-thumb { float: right; width: 200px; max-width: 40%; margin: 0.25rem 0 1rem 1.75rem; border: 1px solid var(--line); }
+
+/* ===========================================================================
+   Homepage hero (full-width navy band, flush under the navbar)
+   =========================================================================== */
+.hero-band { background: var(--navy); color: #fff; }
+.hero-inner {
+  max-width: 1080px; margin: 0 auto; padding: 2.6rem 1.25rem 2rem;
+  display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 2.4rem; align-items: center;
+}
+.hero-band h1 { color: #fff; font-size: 3.1rem; line-height: 1.05; margin: 0 0 0.85rem; }
+.hero-band .aff { color: rgba(255,255,255,.85); line-height: 1.62; font-size: 1.05rem; margin-bottom: 0.9rem; }
+.hero-band .aff a { color: #bcd4ec; text-decoration: underline; text-decoration-color: rgba(188,212,236,.4); text-underline-offset: 2px; }
+.hero-band .aff a:hover { color: #fff; text-decoration-color: #fff; }
+.hero-band .room, .hero-band .email { color: rgba(255,255,255,.6); font-size: 0.9rem; margin: 0.1rem 0; }
+.hero-band .email { margin-bottom: 1.3rem; }
+.hero-band .lab { color: var(--orange-lt); font-weight: 700; }
+.hero-band .room a, .hero-band .email a { color: rgba(255,255,255,.9); text-decoration: underline; text-decoration-color: rgba(255,255,255,.45); text-underline-offset: 2px; }
+.hero-band .room a:hover, .hero-band .email a:hover { color: #fff; text-decoration-color: #fff; }
+.hero-photo {
+  width: 210px; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 18%;
+  border-radius: 12px; border: 1px solid rgba(255,255,255,.25); box-shadow: 0 16px 40px rgba(5,15,35,.4);
+}
+.chips { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.chips a {
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.28); color: #fff;
+  padding: 0.42rem 0.9rem; border-radius: 6px; font-size: 0.88rem; font-weight: 500; transition: .15s;
+}
+.chips a:hover { background: rgba(214,116,46,.9); border-color: var(--orange); text-decoration: none; }
+
+/* ---- Seam band: current card straddles the navy/cream boundary ------------ */
+.current-seam {
+  padding: 1.5rem 0;
+  background: linear-gradient(to bottom,
+    var(--navy) calc(50% - 2px),
+    var(--orange) calc(50% - 2px),
+    var(--orange) calc(50% + 2px),
+    var(--cream) calc(50% + 2px));
+}
+.current-inner { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+.card {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 8px 26px rgba(40,40,40,.06); padding: 1.3rem 1.5rem;
+}
+.current { border-left: 4px solid var(--orange); }
+.current p { margin: 0.3rem 0; }
+
+/* ---- Homepage "Recent News": three cards side by side --------------------- */
+.news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 0.4rem; }
+.news article {
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 8px 26px rgba(40,40,40,.06); padding: 1.2rem 1.3rem;
+}
+.news .date { color: var(--orange-text); font-size: 0.84rem; font-weight: 600; display: block; margin-bottom: 0.35rem; }
+.news h3 { font: 700 1.08rem Sora, system-ui, sans-serif; color: var(--navy); margin: 0 0 0.4rem; }
+.news h3 a { color: var(--navy); }
+.news p { font-size: 0.92rem; color: #54504a; line-height: 1.55; margin: 0; }
+
+/* ---- Brief bio (year | description grid) ---------------------------------- */
+.bio { display: grid; gap: 0.5rem; }
+.bio li { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; font-size: 0.96rem; line-height: 1.5; }
+.yrs { font-weight: 700; color: var(--navy); white-space: nowrap; }
+
+/* ===========================================================================
+   Inner-page title banner (slim navy band, orange underline)
+   =========================================================================== */
+.page-head { background: var(--navy); border-bottom: 4px solid var(--orange); }
+.page-head-inner { max-width: 1080px; margin: 0 auto; padding: 1.7rem 1.25rem; }
+.page-head h1 { color: #fff; font: 700 2.3rem/1.05 Sora, system-ui, sans-serif; letter-spacing: -0.01em; }
+
+/* ===========================================================================
+   News page (one page, all items, newest first)
+   =========================================================================== */
+.news-item {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1.25rem 1.5rem;
+  align-items: start; padding: 1.5rem 0 1.7rem; border-bottom: 1px solid var(--line);
+}
+.news-main h2 { margin: 0 0 0.15rem; font-size: 1.3rem; }
+.news-main > p:first-of-type { margin: 0 0 0.6rem; color: var(--orange-text); font-weight: 600; }
+.news-aside { display: flex; flex-wrap: wrap; justify-content: flex-end; align-content: flex-start; gap: 0.65rem; padding-top: 0.4rem; max-width: 440px; }
+.news-aside p { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.65rem; margin: 0; }
+.news-aside img { width: auto; max-width: 210px; max-height: 110px; object-fit: contain; margin: 0; }
+.news-aside img.large, .news-aside .large img { max-width: 420px; max-height: 220px; }
+
+/* ===========================================================================
+   Group page
+   =========================================================================== */
+.people-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin: 1rem 0 2rem; }
+.person-card { text-align: center; }
+.person-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 1px solid var(--line); border-radius: 10px; margin: 0 0 0.75rem; }
+.person-card p { margin: 0.25rem 0; }
+
+/* ---- Responsive ----------------------------------------------------------- */
+@media (max-width: 720px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero-photo { order: -1; width: 170px; }
+  .hero-band h1 { font-size: 2.5rem; }
+  .news { grid-template-columns: 1fr; }
+  .news-item { grid-template-columns: 1fr; gap: 0.75rem; }
+  .news-aside, .news-aside p { justify-content: flex-start; }
+  .news-aside img { max-width: 150px; }
+  .news-aside img.large, .news-aside .large img { max-width: 70vw; max-height: none; }
+  .bio li { grid-template-columns: 1fr; gap: 0.1rem; }
+  .wrap img.page-thumb { float: none; width: 60%; margin: 1rem 0; }
+}
