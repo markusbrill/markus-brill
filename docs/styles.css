@@ -47,6 +47,8 @@ a:hover { text-decoration: underline; }
 .navlinks a { color: rgba(255,255,255,.72); font: 500 0.95rem Inter, sans-serif; }
 .navlinks a:hover { color: #fff; text-decoration: none; }
 .navlinks a.active { color: #fff; border-bottom: 2px solid var(--orange); padding-bottom: 2px; }
+/* Homepage omits the brand (name already shown in the hero); keep links right-aligned */
+.nav-inner--home { justify-content: flex-end; }
 
 /* ---- Headings & content links --------------------------------------------- */
 h1, h2, h3, h4 { font-family: Sora, system-ui, sans-serif; color: var(--navy); }
@@ -146,6 +148,10 @@ a.ref:hover { background: #18567f; color: #fff; text-decoration: none; }
 }
 .current { border-left: 4px solid var(--orange); }
 .current p { margin: 0.3rem 0; }
+
+/* Tighten the gap between the current-teaching card and "Recent News" (homepage only) */
+.current-seam + main { padding-top: 0.6rem; }
+.current-seam + main > h2:first-child { margin-top: 1rem; }
 
 /* ---- Homepage "Recent News": three cards side by side --------------------- */
 .news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 0.4rem; }
