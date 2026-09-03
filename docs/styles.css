@@ -193,6 +193,9 @@ a.ref:hover { background: #18567f; color: #fff; text-decoration: none; }
 .bio { display: grid; gap: 0.5rem; }
 .bio li { display: grid; grid-template-columns: 120px 1fr; gap: 1rem; font-size: 0.96rem; line-height: 1.5; }
 .yrs { font-weight: 700; color: var(--navy); white-space: nowrap; }
+.home-anniversary-logo { display: flex; justify-content: center; margin: 3.5rem 0 0; }
+.home-anniversary-logo a { display: inline-block; }
+.home-anniversary-logo img { width: 430px; max-width: 80vw; height: auto; margin: 0; border-radius: 0; }
 
 /* ===========================================================================
    Inner-page title banner (slim navy band, orange underline)
