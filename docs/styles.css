@@ -149,11 +149,36 @@ a.ref:hover { background: #18567f; color: #fff; text-decoration: none; }
 .current { border-left: 4px solid var(--orange); }
 .current p { margin: 0.3rem 0; }
 
-/* Tighten the gap between the current-teaching card and "Recent News" (homepage only) */
-.current-seam + main { padding-top: 0.6rem; }
-.current-seam + main > h2:first-child { margin-top: 1rem; }
+/* ---- Prominent links to the Joining the Group page ------------------------ */
+.join-callout {
+  background: linear-gradient(135deg, var(--card), #fbf4e9);
+  border: 1px solid var(--line); border-left: 4px solid var(--orange); border-radius: 12px;
+  box-shadow: 0 8px 26px rgba(40,40,40,.06); padding: 1.2rem 1.35rem; margin: 0 0 1.8rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+}
+.join-callout h2 { margin: 0 0 0.25rem; font-size: 1.25rem; }
+.join-callout p { margin: 0; }
+.join-button {
+  display: inline-flex; align-items: center; gap: 0.45rem; flex: 0 0 auto;
+  border: 2px solid var(--orange); border-radius: 999px; background: #fbeee3; color: var(--navy);
+  padding: 0.48rem 0.9rem; font-weight: 700; font-size: 0.9rem; white-space: nowrap;
+}
+.join-button:hover { background: var(--orange); color: var(--navy); text-decoration: none; }
+.join-callout--compact { margin: 0 0 2.2rem; }
+
+/* Tighten the gap between the current-teaching card and homepage content. */
+.current-seam + main { padding-top: 1rem; }
+.current-seam + main > .join-callout { margin-top: 0; }
+.join-callout + h2 { margin-top: 1.8rem; }
 
 /* ---- Homepage "Recent News": three cards side by side --------------------- */
+.section-heading-row {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  margin: 2.4rem 0 1.1rem;
+}
+.join-callout + .section-heading-row { margin-top: 1.8rem; }
+.section-heading-row h2 { margin: 0; }
+.news-archive-link { color: var(--orange-text); font-weight: 700; white-space: nowrap; }
 .news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin-top: 0.4rem; }
 .news article {
   background: var(--card); border: 1px solid var(--line); border-radius: 12px;
@@ -188,6 +213,8 @@ a.ref:hover { background: #18567f; color: #fff; text-decoration: none; }
 .news-aside { display: flex; flex-wrap: wrap; justify-content: flex-end; align-content: flex-start; gap: 0.65rem; padding-top: 0.4rem; max-width: 440px; }
 .news-aside p { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.65rem; margin: 0; }
 .news-aside img { width: auto; max-width: 210px; max-height: 110px; object-fit: contain; margin: 0; }
+.news-aside img.portrait { width: 150px; height: 150px; max-height: none; object-fit: cover; }
+.news-aside img.portrait-contained { width: auto; height: 150px; max-height: none; object-fit: contain; }
 .news-aside img.large, .news-aside .large img { max-width: 420px; max-height: 220px; }
 
 /* ===========================================================================
@@ -198,8 +225,30 @@ a.ref:hover { background: #18567f; color: #fff; text-decoration: none; }
 .person-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 1px solid var(--line); border-radius: 10px; margin: 0 0 0.75rem; }
 .person-card p { margin: 0.25rem 0; }
 
+/* ===========================================================================
+   Joining the Group page
+   =========================================================================== */
+.join-page { max-width: 860px; }
+.join-jumps {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0.55rem;
+  background: var(--soft); border: 1px solid var(--line); border-radius: 10px;
+  margin: 1.1rem 0 1.3rem; padding: 0.75rem 0.9rem;
+}
+.join-jumps-label { color: var(--muted); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; margin-right: 0.15rem; text-transform: uppercase; }
+.join-jumps a {
+  display: inline-flex; border: 1.5px solid var(--blue); border-radius: 999px;
+  color: var(--blue); font-size: 0.86rem; font-weight: 600; padding: 0.26rem 0.68rem;
+}
+.join-jumps a:hover { background: #eaf2fa; text-decoration: none; }
+.join-page .info-callout {
+  background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--blue);
+  border-radius: 8px; margin: 1rem 0 1.5rem; padding: 0.8rem 1rem;
+}
+.join-page .last-updated { border-top: 1px solid var(--line); color: var(--muted); margin-top: 3rem; padding-top: 1rem; }
+
 /* ---- Responsive ----------------------------------------------------------- */
 @media (max-width: 720px) {
+  .navlinks { gap: 0.65rem 1rem; }
   .hero-inner { grid-template-columns: 1fr; gap: 1.5rem; }
   .hero-photo { order: -1; width: 170px; }
   .hero-band h1 { font-size: 2.5rem; }
@@ -210,4 +259,5 @@ a.ref:hover { background: #18567f; color: #fff; text-decoration: none; }
   .news-aside img.large, .news-aside .large img { max-width: 70vw; max-height: none; }
   .bio li { grid-template-columns: 1fr; gap: 0.1rem; }
   .wrap img.page-thumb { float: none; width: 60%; margin: 1rem 0; }
+  .join-callout { align-items: flex-start; flex-direction: column; gap: 0.85rem; }
 }
