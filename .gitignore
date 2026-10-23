@@ -4,3 +4,12 @@
 *.mdx
 check_links.py
 /archive/
+
+# Local experimental research graphics
+/docs/assets/research-graphics/
+/docs/research-graphics.html
+/scripts/research-graphics.cjs
+
+# Local research drafts
+/ejr-unit-cost-hardness.pdf
+/ejr-unit-cost-hardness.tex
